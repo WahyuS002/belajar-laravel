@@ -17,13 +17,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('about', function () {
-    $name = 'Wahyu Syahputra';
-    $age = 20;
-
-    // return view('about', ['name' => $name, 'age' => $age]);
-    return view('about', compact('name', 'age'));
-});
+Route::get('about', 'AboutController@index');
 
 Route::get('post', function () {
     return view('post.index');
