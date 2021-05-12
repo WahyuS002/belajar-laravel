@@ -9,6 +9,7 @@
     <title>Album example · Bootstrap v4.6</title>
 
     @include('includes.public.style')
+    @yield('custom-style')
 
 </head>
 <body>
