@@ -15,11 +15,11 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('public.post.index');
-});
+})->name('post.index');
 
 Route::get('/post/1/detail', function () {
     return view('public.post.detail');
-});
+})->name('post.detail');
 
 Auth::routes();
 
