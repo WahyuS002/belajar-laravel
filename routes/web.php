@@ -13,6 +13,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+/*
+    FRONTEND
+*/
 Route::get('/', function () {
     return view('public.post.index');
 })->name('post.index');
@@ -21,6 +24,13 @@ Route::get('/post/1/detail', function () {
     return view('public.post.detail');
 })->name('post.detail');
 
+/*
+    AUTHENTICATION
+*/
 Auth::routes();
 
+/*
+    BACKEND
+*/
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/post', 'PostController@index')->name('post');
