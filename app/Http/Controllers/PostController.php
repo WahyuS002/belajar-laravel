@@ -14,14 +14,23 @@ class PostController extends Controller
 
     public function store(Request $request)
     {
-        $post = new Post();
+        Post::create([
+            'user_id' => auth()->user()->id,
+            'title' => $request->title,
+            'slug' => \Str::slug($request->title),
+            'category_id' => $request->category_id,
+            'image' => 'default-image',
+            'description' => $request->description,
+        ]);
 
-        $post->user_id = auth()->user()->id;
-        $post->title = $request->title;
-        $post->slug = \Str::slug($request->title);
-        $post->category_id = $request->category_id;
-        $post->image = 'default-image';
-        $post->description = $request->description;
-        $post->save();
+        // $post = new Post();
+
+        // $post->user_id = auth()->user()->id;
+        // $post->title = $request->title;
+        // $post->slug = \Str::slug($request->title);
+        // $post->category_id = $request->category_id;
+        // $post->image = 'default-image';
+        // $post->description = $request->description;
+        // $post->save();
     }
 }
