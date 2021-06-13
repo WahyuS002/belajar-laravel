@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Route;
 /*
     FRONTEND
 */
+
 Route::get('/', function () {
     return view('public.post.index');
 })->name('post.index');

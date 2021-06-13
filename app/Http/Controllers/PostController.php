@@ -17,16 +17,19 @@ class PostController extends Controller
         $this->validate($request, [
             'title' => 'required',
             'category_id' => 'required',
-            // 'image' => 'required',
+            'image' => 'required|mimes:jpg,jpeg,png',
             'description' => 'required',
         ]);
+
+        $file_name = $request->image->getClientOriginalName();
+        $image = $request->image->storeAs('thumbnail', $file_name);
 
         Post::create([
             'user_id' => auth()->user()->id,
             'title' => $request->title,
             'slug' => \Str::slug($request->title),
             'category_id' => $request->category_id,
-            'image' => 'default-image',
+            'image' => $image,
             'description' => $request->description,
         ]);
 
