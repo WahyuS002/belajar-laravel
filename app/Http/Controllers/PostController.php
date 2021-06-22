@@ -9,7 +9,10 @@ class PostController extends Controller
 {
     public function index()
     {
-         return view('private.post.index');
+        $user_id = auth()->user()->id;
+        $posts = Post::where('user_id', $user_id)->get();
+
+         return view('private.post.index', compact('posts'));
     }
 
     public function create()

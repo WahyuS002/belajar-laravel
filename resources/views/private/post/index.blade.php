@@ -8,12 +8,13 @@
                 <h5 class="card-title">Your Posts</h5>
                 <a href="{{ route('post.create') }}" class="btn btn-primary">Create a new post</a>
             </div>
-            <div class="d-flex justify-content-between align-items-center">
+            @foreach ($posts as $post)
+            <div class="d-flex justify-content-between align-items-center my-2">
                 <div class="d-flex align-items-center">
-                    <img width="125px" height="75px" src="https://www.pixsy.com/wp-content/uploads/2021/04/ben-sweet-2LowviVHZ-E-unsplash-1.jpeg" alt="" style="object-fit: cover;">
+                    <img width="125px" height="75px" src="{{ asset('storage/' . $post->image ) }}" alt="default" style="object-fit: cover;">
                     <div class="ml-3">
-                        <p>Lorem ipsum dolor sit.</p>
-                        <p class="text-muted">3 May 2021 &middot; 3 week ago</p>
+                        <p>{{ $post->title }}</p>
+                        <p class="text-muted">{{ $post->created_at->format('Y-M-d') }} &middot; {{ $post->created_at->diffForHumans() }}</p>
                     </div>
                 </div>
                 <div>
@@ -29,6 +30,7 @@
                     </button>
                 </div>
             </div>
+            @endforeach
         </div>
     </div>
 </div>
