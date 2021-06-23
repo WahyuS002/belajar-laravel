@@ -6,7 +6,7 @@
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Hugo 0.80.0">
-    <title>Album example · Bootstrap v4.6</title>
+    <title>Belajar Laravel</title>
 
     @include('includes.public.style')
     @yield('custom-style')
