@@ -8,7 +8,7 @@
                 <h5 class="card-title">Your Posts</h5>
                 <a href="{{ route('post.create') }}" class="btn btn-primary">Create a new post</a>
             </div>
-            @foreach ($posts as $post)
+            @forelse ($posts as $post)
             <div class="d-flex justify-content-between align-items-center my-2">
                 <div class="d-flex align-items-center">
                     <img width="125px" height="75px" src="{{ asset('storage/' . $post->image ) }}" alt="default" style="object-fit: cover;">
@@ -30,7 +30,11 @@
                     </button>
                 </div>
             </div>
-            @endforeach
+            @empty
+            <div class="alert alert-danger mt-3 text-center" role="alert">
+                You don't have any posts
+            </div>
+            @endforelse
         </div>
     </div>
 </div>
