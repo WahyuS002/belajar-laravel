@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Post;
 use Illuminate\Http\Request;
 
@@ -44,8 +45,31 @@ class PostController extends Controller
 
     public function edit(Post $post)
     {
-        // $post = Post::find($id);
+        $categories = Category::all();
 
-         dd($post);
+        return view('private.post.edit', compact('post', 'categories'));
+    }
+
+    public function update(Post $post, Request $request)
+    {
+        $this->validate($request, [
+            'title' => 'required',
+            'category_id' => 'required',
+            'image' => 'required|mimes:jpg,jpeg,png',
+            'description' => 'required',
+        ]);
+
+        $file_name = $request->image->getClientOriginalName();
+        $image = $request->image->storeAs('thumbnail', $file_name);
+
+        $post->update([
+            'title' => $request->title,
+            'slug' => \Str::slug($request->title),
+            'category_id' => $request->category_id,
+            'image' => $image,
+            'description' => $request->description,
+        ]);
+
+        return redirect()->route('post');
     }
 }
