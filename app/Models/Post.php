@@ -10,4 +10,9 @@ class Post extends Model
     use HasFactory;
 
     protected $fillable = ['user_id', 'category_id', 'title', 'slug', 'image', 'description'];
+
+    public function getRouteKeyName()
+    {
+         return 'slug';
+    }
 }

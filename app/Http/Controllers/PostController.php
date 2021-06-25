@@ -40,15 +40,12 @@ class PostController extends Controller
             'image' => $image,
             'description' => $request->description,
         ]);
+    }
 
-        // $post = new Post();
+    public function edit(Post $post)
+    {
+        // $post = Post::find($id);
 
-        // $post->user_id = auth()->user()->id;
-        // $post->title = $request->title;
-        // $post->slug = \Str::slug($request->title);
-        // $post->category_id = $request->category_id;
-        // $post->image = 'default-image';
-        // $post->description = $request->description;
-        // $post->save();
+         dd($post);
     }
 }
