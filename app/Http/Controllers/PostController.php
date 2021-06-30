@@ -41,6 +41,8 @@ class PostController extends Controller
             'image' => $image,
             'description' => $request->description,
         ]);
+
+        return redirect()->route('post')->with('message', 'Anda berhasil <strong>membuat</strong> post 🐱‍🐉');
     }
 
     public function edit(Post $post)
@@ -70,13 +72,15 @@ class PostController extends Controller
             'description' => $request->description,
         ]);
 
-        return redirect()->route('post');
+        // session()->flash('message', 'Anda berhasil <strong>mengedit</strong> post 👾');
+
+        return redirect()->route('post')->with('message', 'Anda berhasil <strong>mengedit</strong> post 👾');
     }
 
     public function destroy(Post $post)
     {
         $post->delete();
 
-        return redirect()->back();
+        return redirect()->back()->with('message', 'Anda berhasil <strong>menghapus</strong> post 🗑');
     }
 }
