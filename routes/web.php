@@ -17,13 +17,9 @@ use Illuminate\Support\Facades\Route;
     FRONTEND
 */
 
-Route::get('/', function () {
-    return view('public.post.index');
-})->name('post.index');
+Route::get('/', 'PublicController@index')->name('post.index');
 
-Route::get('/post/1/detail', function () {
-    return view('public.post.detail');
-})->name('post.detail');
+Route::get('/post/show/{post}', 'PublicController@show')->name('post.show');
 
 /*
     AUTHENTICATION
