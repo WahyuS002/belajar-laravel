@@ -47,6 +47,7 @@ class PostController extends Controller
 
     public function edit(Post $post)
     {
+        $this->authorize('update', $post);
         $categories = Category::all();
 
         return view('private.post.edit', compact('post', 'categories'));
@@ -54,6 +55,7 @@ class PostController extends Controller
 
     public function update(Post $post, Request $request)
     {
+        $this->authorize('update', $post);
         $this->validate($request, [
             'title' => 'required',
             'category_id' => 'required',
