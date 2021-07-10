@@ -20,6 +20,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', 'PublicController@index')->name('post.index');
 
 Route::get('/post/show/{post}', 'PublicController@show')->name('post.show');
+Route::get('/category/show/{category}', 'PublicController@category')->name('category.show');
 
 /*
     AUTHENTICATION
