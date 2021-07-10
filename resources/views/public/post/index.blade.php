@@ -29,7 +29,7 @@
                         <div class="card-body">
                             <p class="card-text">{{ $post->description }}</p>
                             <div class="d-flex justify-content-between align-items-center">
-                                <small class="text-muted">{{ $post->user_id }}</small>
+                                <small class="text-muted">{{ $post->user->name }}</small>
                                 <small class="text-muted">{{ $post->created_at->diffForHumans() }}</small>
                             </div>
                         </div>
