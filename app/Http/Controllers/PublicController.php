@@ -10,7 +10,7 @@ class PublicController extends Controller
 {
     public function index()
     {
-        $posts = Post::latest()->get();
+        $posts = Post::with('user')->latest()->get();
         return view('public.post.index', compact('posts'));
     }
 
